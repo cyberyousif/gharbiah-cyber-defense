@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request Service | Tucson Cybersecurity</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="brand">
+        <span>🛡️ Tucson Cybersecurity</span>
+        <span class="badge">Request Service</span>
+      </div>
+      <div class="actions">
+        <a class="btn btnGhost" href="index.html">← Back Home</a>
+      </div>
+    </div>
+
+    <div class="formWrap">
+      <div class="heroCard">
+        <div class="kicker">Tell me what you need • I’ll respond with next steps</div>
+        <div class="h1" style="font-size:34px;">Request a Security Checkup / Service</div>
+        <p class="lead">
+          Fill this out and you’ll get a reply with availability, pricing options, and what I recommend.
+        </p>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="formCard">
+        <!-- ✅ Formspree: replace YOUR_FORM_ID after you create it -->
+        <form action=https://formspree.io/f/mrezplye method="POST">
+          <div class="row">
+            <div>
+              <label for="name">Full Name</label>
+              <input id="name" name="name" required placeholder="Your name">
+            </div>
+            <div>
+              <label for="business">Business Name</label>
+              <input id="business" name="business" placeholder="Business name (optional)">
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required placeholder="you@email.com">
+            </div>
+            <div>
+              <label for="phone">Phone (Text/Call)</label>
+              <input id="phone" name="phone" placeholder="(520) ___-____">
+            </div>
+          </div>
+
+          <label for="service">What are you interested in?</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select one…</option>
+            <option>Security Checkup</option>
+            <option>Secure Setup & Hardening</option>
+            <option>Vulnerability Scanning (Authorized)</option>
+            <option>Employee Security Training</option>
+            <option>Not sure — I need guidance</option>
+          </select>
+
+          <label for="problem">What problem are you trying to solve?</label>
+          <textarea id="problem" name="problem" required
+            placeholder="Example: We want safer Wi-Fi, better passwords, protection from phishing, backups, etc."></textarea>
+
+          <!-- Helps prevent spam + gives you a subject line -->
+          <input type="hidden" name="_subject" value="New Cybersecurity Service Request (Tucson)">
+          <input type="hidden" name="_next" value="thanks.html">
+
+          <div class="actions" style="margin-top:14px;">
+            <button class="btn btnPrimary" type="submit">Send Request</button>
+            <a class="btn btnGhost" href="mailto:youremail@email.com?subject=Cybersecurity%20Request%20-%20Tucson">Or email instead</a>
+          </div>
+
+          <div class="note">
+            By submitting, you agree this is a request for legitimate security services. Work is performed with written authorization.
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>All services provided with written authorization and focused on risk reduction & best practices.</div>
+    </div>
+  </div>
+</body>
+</html>
