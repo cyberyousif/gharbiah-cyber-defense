@@ -214,4 +214,9 @@ select {
 select:focus {
   outline: 2px solid #3b82f6;
 }
+/* Force readable option text (best you can do with native select) */
+select option {
+  color: #111 !important;
+  background: #fff !important;
+}
 
