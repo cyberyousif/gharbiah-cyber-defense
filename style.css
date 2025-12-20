@@ -188,35 +188,77 @@ textarea{ min-height: 120px; resize: vertical; }
   font-size: 12px;
   color: var(--muted);
 }
+/* ===============================
+   CUSTOM DROPDOWN (OPTION 2)
+   =============================== */
 
-select {
-  background-color: #1c1f26;
-  color: #f5f5f5;
-  border: 1px solid #555;
+.dd {
+  position: relative;
+  width: 100%;
 }
 
-select option {
-  background-color: #1c1f26;
-  color: #f5f5f5;
-}
-
-select option:hover,
-select option:checked {
-  background-color: #3b82f6;
+.ddBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #0f172a;
   color: #ffffff;
-}
-select {
-  background-color: #0f172a; /* darker */
-  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.25);
+  font-size: 15px;
   font-weight: 600;
+  cursor: pointer;
 }
 
-select:focus {
+.ddBtn:hover {
+  background: #111c33;
+}
+
+.ddBtn:focus {
   outline: 2px solid #3b82f6;
-}
-/* Force readable option text (best you can do with native select) */
-select option {
-  color: #111 !important;
-  background: #fff !important;
+  outline-offset: 2px;
 }
 
+.ddChevron {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.ddMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #0b1220;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 14px;
+  padding: 6px;
+  margin: 0;
+  list-style: none;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.55);
+  display: none;
+  z-index: 999;
+}
+
+.dd.isOpen .ddMenu {
+  display: block;
+}
+
+.ddItem {
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.ddItem:hover {
+  background: rgba(96,165,250,0.25);
+}
+
+.ddItem.isActive {
+  background: rgba(94,234,212,0.22);
+  border: 1px solid rgba(94,234,212,0.4);
+}
