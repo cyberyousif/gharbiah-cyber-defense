@@ -1,10 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Request Service | Tucson Cybersecurity</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Cache buster so CSS updates show immediately -->
+  <link rel="stylesheet" href="style.css?v=3">
   <link rel="icon" href="favicon.ico">
 </head>
 <body>
@@ -31,8 +34,8 @@
       <div style="height:14px"></div>
 
       <div class="formCard">
-        <!-- ✅ Formspree: replace YOUR_FORM_ID after you create it -->
-        <form action=https://formspree.io/f/mrezplye method="POST">
+        <!-- Formspree -->
+        <form action="https://formspree.io/f/mrezplye" method="POST">
           <div class="row">
             <div>
               <label for="name">Full Name</label>
@@ -55,21 +58,32 @@
             </div>
           </div>
 
-          <label for="service">What are you interested in?</label>
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Select one…</option>
-            <option>Security Checkup</option>
-            <option>Secure Setup & Hardening</option>
-            <option>Vulnerability Scanning (Authorized)</option>
-            <option>Employee Security Training</option>
-            <option>Not sure — I need guidance</option>
-          </select>
+          <!-- ✅ Custom Dropdown (replaces <select>) -->
+          <label for="service_display">What are you interested in?</label>
+
+          <!-- Hidden input submits the selection to Formspree -->
+          <input type="hidden" name="service" id="service" value="Security Checkup" required>
+
+          <div class="dd" data-dd>
+            <button type="button" class="ddBtn" aria-haspopup="listbox" aria-expanded="false" id="service_display">
+              <span class="ddValue" data-dd-value>Security Checkup</span>
+              <span class="ddChevron" aria-hidden="true">▾</span>
+            </button>
+
+            <ul class="ddMenu" role="listbox" tabindex="-1" aria-label="Service options">
+              <li class="ddItem isActive" role="option" aria-selected="true" data-value="Security Checkup">Security Checkup</li>
+              <li class="ddItem" role="option" data-value="Secure Setup &amp; Hardening">Secure Setup &amp; Hardening</li>
+              <li class="ddItem" role="option" data-value="Vulnerability Scanning (Authorized)">Vulnerability Scanning (Authorized)</li>
+              <li class="ddItem" role="option" data-value="Employee Security Training">Employee Security Training</li>
+              <li class="ddItem" role="option" data-value="Not sure — I need guidance">Not sure — I need guidance</li>
+            </ul>
+          </div>
 
           <label for="problem">What problem are you trying to solve?</label>
           <textarea id="problem" name="problem" required
             placeholder="Example: We want safer Wi-Fi, better passwords, protection from phishing, backups, etc."></textarea>
 
-          <!-- Helps prevent spam + gives you a subject line -->
+          <!-- Subject + redirect -->
           <input type="hidden" name="_subject" value="New Cybersecurity Service Request (Tucson)">
           <input type="hidden" name="_next" value="thanks.html">
 
@@ -89,5 +103,51 @@
       <div>All services provided with written authorization and focused on risk reduction & best practices.</div>
     </div>
   </div>
+
+  <!-- ✅ Custom dropdown JS -->
+  <script>
+    document.querySelectorAll("[data-dd]").forEach(dd => {
+      const btn = dd.querySelector(".ddBtn");
+      const menu = dd.querySelector(".ddMenu");
+      const valueEl = dd.querySelector("[data-dd-value]");
+      const hidden = document.getElementById("service");
+      const items = Array.from(dd.querySelectorAll(".ddItem"));
+
+      function close() {
+        dd.classList.remove("isOpen");
+        btn.setAttribute("aria-expanded", "false");
+      }
+      function open() {
+        dd.classList.add("isOpen");
+        btn.setAttribute("aria-expanded", "true");
+      }
+      function setValue(val, text) {
+        hidden.value = val;
+        valueEl.textContent = text;
+        items.forEach(i => {
+          const active = i.dataset.value === val;
+          i.classList.toggle("isActive", active);
+          i.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        close();
+      }
+
+      btn.addEventListener("click", () => {
+        dd.classList.contains("isOpen") ? close() : open();
+      });
+
+      items.forEach(item => {
+        item.addEventListener("click", () => setValue(item.dataset.value, item.textContent));
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!dd.contains(e.target)) close();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") close();
+      });
+    });
+  </script>
 </body>
 </html>
