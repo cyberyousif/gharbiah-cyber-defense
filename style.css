@@ -205,4 +205,13 @@ select option:checked {
   background-color: #3b82f6;
   color: #ffffff;
 }
+select {
+  background-color: #0f172a; /* darker */
+  color: #ffffff;
+  font-weight: 600;
+}
+
+select:focus {
+  outline: 2px solid #3b82f6;
+}
 
