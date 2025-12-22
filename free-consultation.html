@@ -3,19 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Request Service | Gharbiah Cyber Defense</title>
+  <title>Free Consultation | Gharbiah Cyber Defense</title>
 
-  <!-- Your main site CSS -->
   <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" href="favicon.ico">
 
-  <!-- SAFETY STYLES: keeps the request form from “breaking” even if style.css changes -->
   <style>
-    /* ✅ IMPORTANT FIX:
-       Only hide accidental bullet lists, NOT the dropdown menu (ddMenu) */
     form ul:not(.ddMenu) { display: none !important; margin: 0 !important; padding: 0 !important; }
 
-    /* Form layout */
     .formWrap { margin-top: 18px; }
     .formCard {
       border-radius: 18px;
@@ -23,10 +18,9 @@
       border: 1px solid rgba(255,255,255,0.14);
       box-shadow: 0 18px 45px rgba(0,0,0,0.45);
       padding: 18px;
-      overflow: visible; /* helps dropdown */
+      overflow: visible;
     }
-    .heroCard { overflow: visible; }
-    .container { overflow: visible; }
+    .heroCard, .container { overflow: visible; }
 
     .row{
       display:grid;
@@ -37,7 +31,6 @@
       .row{ grid-template-columns: 1fr; }
     }
 
-    /* Inputs */
     label{
       display:block;
       margin-top:14px;
@@ -62,7 +55,6 @@
       resize:vertical;
     }
 
-    /* Custom dropdown */
     .dd{ position: relative; margin-top: 6px; z-index: 9999; }
     .ddBtn{
       width: 100%;
@@ -75,7 +67,7 @@
       border:1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.06);
       color: rgba(255,255,255,0.92);
-      cursor:pointer; /* fixes the “typing cursor” feeling */
+      cursor:pointer;
     }
     .ddChevron{ opacity: .8; }
     .ddMenu{
@@ -91,24 +83,21 @@
       background: rgba(10,16,28,0.96);
       box-shadow: 0 18px 45px rgba(0,0,0,0.55);
       display:none;
-      z-index: 99999; /* ✅ ensure it sits above everything */
+      z-index: 99999;
     }
     .dd.isOpen .ddMenu{ display:block; }
     .ddItem{
-      padding:10px 10px;
+      padding:10px;
       border-radius:12px;
       cursor:pointer;
       color: rgba(255,255,255,0.88);
     }
-    .ddItem:hover{
-      background: rgba(255,255,255,0.08);
-    }
+    .ddItem:hover{ background: rgba(255,255,255,0.08); }
     .ddItem.isActive{
       background: rgba(94,234,212,0.14);
       border: 1px solid rgba(94,234,212,0.22);
     }
 
-    /* Note */
     .note{
       margin-top: 12px;
       color: rgba(255,255,255,0.70);
@@ -123,7 +112,7 @@
     <div class="nav">
       <div class="brand">
         <span>🛡️ Gharbiah Cyber Defense</span>
-        <span class="badge">Request Service</span>
+        <span class="badge">Free Consultation</span>
       </div>
       <div class="actions">
         <a class="btn btnGhost" href="index.html">← Back Home</a>
@@ -132,10 +121,11 @@
 
     <div class="formWrap">
       <div class="heroCard">
-        <div class="kicker">Tell me what you need • I’ll respond with next steps</div>
-        <div class="h1" style="font-size:34px;">Request a Security Checkup / Service</div>
+        <div class="kicker">Tell me what’s going on • I’ll reply with next steps</div>
+        <div class="h1" style="font-size:34px;">Free Consultation</div>
         <p class="lead">
-          Fill this out and you’ll get a reply with availability, pricing options, and what I recommend.
+          This free consultation helps me understand your situation and identify potential risks.
+          There’s no obligation. If you want to move forward, options and pricing are explained first.
         </p>
       </div>
 
@@ -143,6 +133,9 @@
 
       <div class="formCard">
         <form action="https://formspree.io/f/mrezplye" method="POST">
+
+          <!-- IDENTIFIES THIS AS FREE CONSULTATION -->
+          <input type="hidden" name="request_type" value="Free Consultation">
 
           <div class="row">
             <div>
@@ -161,54 +154,52 @@
               <input id="email" name="email" type="email" required placeholder="you@email.com">
             </div>
             <div>
-              <label for="phone">Phone (Text/Call)</label>
+              <label for="phone">Phone (optional)</label>
               <input id="phone" name="phone" placeholder="(520) ___-____">
             </div>
           </div>
 
-          <label for="service_display">What are you interested in?</label>
+          <label for="service_display">What would you like help with?</label>
 
-          <!-- Hidden input submits the selection to Formspree -->
-          <input type="hidden" name="service" id="service" value="Security Checkup" required>
+          <input type="hidden" name="service" id="service" value="Free Consultation" required>
 
           <div class="dd" data-dd>
-            <button type="button" class="ddBtn" aria-haspopup="listbox" aria-expanded="false" id="service_display">
-              <span class="ddValue" data-dd-value>Security Checkup</span>
-              <span class="ddChevron" aria-hidden="true">▾</span>
+            <button type="button" class="ddBtn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="ddValue" data-dd-value>Free Consultation</span>
+              <span class="ddChevron">▾</span>
             </button>
 
-            <ul class="ddMenu" role="listbox" tabindex="-1" aria-label="Service options">
-  <li class="ddItem isActive" role="option" aria-selected="true" data-value="Security Checkup">Security Checkup</li>
-  <li class="ddItem" role="option" data-value="Secure Setup &amp; Hardening">Secure Setup &amp; Hardening</li>
-  <li class="ddItem" role="option" data-value="Vulnerability Scanning (Authorized)">Vulnerability Scanning (Authorized)</li>
-  <li class="ddItem" role="option" data-value="Backup &amp; Recovery Planning">Backup &amp; Recovery Planning</li>
-  <li class="ddItem" role="option" data-value="Digital Forensics Support">Digital Forensics Support</li>
-  <li class="ddItem" role="option" data-value="Not sure — I need guidance">Not sure — I need guidance</li>
-</ul>
-
+            <ul class="ddMenu">
+              <li class="ddItem isActive" data-value="Free Consultation">Free Consultation</li>
+              <li class="ddItem" data-value="General Security Questions">General security questions</li>
+              <li class="ddItem" data-value="Wi-Fi or Device Safety">Wi-Fi or device safety</li>
+              <li class="ddItem" data-value="Suspicious Email or Text">Suspicious email or text</li>
+              <li class="ddItem" data-value="Password or Account Security">Password or account security</li>
+              <li class="ddItem" data-value="Not sure — need guidance">Not sure — I need guidance</li>
+            </ul>
           </div>
 
-          <label for="problem">What problem are you trying to solve?</label>
+          <label for="problem">Tell me what’s going on</label>
           <textarea id="problem" name="problem" required
-            placeholder="Example: We want safer Wi-Fi, better passwords, protection from phishing, backups, etc."></textarea>
+            placeholder="Example: I received a suspicious message, want safer Wi-Fi, worried about my accounts, or just want to know if things are set up correctly."></textarea>
 
-          <input type="hidden" name="_subject" value="New Cybersecurity Service Request (Tucson)">
+          <input type="hidden" name="_subject" value="New Free Consultation Request (Tucson)">
           <input type="hidden" name="_next" value="thanks.html">
 
           <div class="actions" style="margin-top:14px;">
-            <button class="btn btnPrimary" type="submit">Send Request</button>
-            <a class="btn btnGhost" href="mailto:gharbiahcyberdefense@gmail.com?subject=Cybersecurity%20Request%20-%20Tucson">Or email instead</a>
+            <button class="btn btnPrimary" type="submit">Submit Free Consultation</button>
+            <a class="btn btnGhost" href="mailto:gharbiahcyberdefense@gmail.com?subject=Free%20Consultation%20-%20Tucson">Or email instead</a>
           </div>
 
           <div class="note">
-            By submitting, you agree this is a request for legitimate security services. Work is performed with written authorization.
+            This consultation is for legitimate cybersecurity guidance. Any work is performed only with written authorization.
           </div>
         </form>
       </div>
     </div>
 
     <div class="footer">
-      <div>All services provided with written authorization and focused on risk reduction & best practices.</div>
+      <div>All services provided responsibly and focused on prevention and best practices.</div>
     </div>
   </div>
 
@@ -230,31 +221,13 @@
       function setValue(val, text) {
         hidden.value = val;
         valueEl.textContent = text;
-
-        items.forEach(i => {
-          const active = i.dataset.value === val;
-          i.classList.toggle("isActive", active);
-          i.setAttribute("aria-selected", active ? "true" : "false");
-        });
-
+        items.forEach(i => i.classList.toggle("isActive", i.dataset.value === val));
         close();
       }
 
-      btn.addEventListener("click", () => {
-        dd.classList.contains("isOpen") ? close() : open();
-      });
-
-      items.forEach(item => {
-        item.addEventListener("click", () => setValue(item.dataset.value, item.textContent));
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!dd.contains(e.target)) close();
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") close();
-      });
+      btn.addEventListener("click", () => dd.classList.contains("isOpen") ? close() : open());
+      items.forEach(i => i.addEventListener("click", () => setValue(i.dataset.value, i.textContent)));
+      document.addEventListener("click", e => !dd.contains(e.target) && close());
     });
   </script>
 </body>

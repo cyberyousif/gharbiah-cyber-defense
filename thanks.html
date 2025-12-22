@@ -3,20 +3,207 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thanks! | Tucson Cybersecurity</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Thank You | Gharbiah Cyber Defense</title>
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" href="favicon.ico">
+
+  <style>
+    /* Page layout so it doesn't look empty */
+    .thanksShell{
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+    .thanksMain{
+      display: grid;
+      place-items: center;
+      padding: 28px 0 40px;
+    }
+    .thanksCard{
+      width: min(980px, 92vw);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow:
+        0 30px 90px rgba(0,0,0,0.55),
+        0 1px 0 rgba(255,255,255,0.08) inset;
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+    .thanksCard::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      border-radius: inherit;
+      pointer-events:none;
+      background: linear-gradient(
+        120deg,
+        rgba(94,234,212,0.10),
+        rgba(255,255,255,0.05),
+        rgba(96,165,250,0.10)
+      );
+      opacity: 0.35;
+      mask-image: radial-gradient(650px 280px at 18% 12%, #000 35%, transparent 70%);
+    }
+    .thanksInner{ position: relative; z-index: 1; padding: 26px; }
+
+    .kickerClean{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      color: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 8px 12px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(94,234,212,0.95);
+      box-shadow: 0 0 18px rgba(94,234,212,0.28);
+    }
+
+    .thanksTitle{
+      margin: 14px 0 10px;
+      font-size: 44px;
+      line-height: 1.08;
+      letter-spacing: 0.4px;
+      text-shadow: 0 18px 50px rgba(0,0,0,0.55);
+    }
+    .thanksLead{
+      margin: 0;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.6;
+      max-width: 72ch;
+    }
+    .muted{
+      margin-top: 10px;
+      color: rgba(255,255,255,0.66);
+      font-size: 13px;
+      line-height: 1.55;
+      max-width: 80ch;
+    }
+
+    .nextSteps{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 900px){
+      .thanksTitle{ font-size: 36px; }
+      .nextSteps{ grid-template-columns: 1fr; }
+    }
+    .step{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      padding: 14px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.28);
+    }
+    .stepTitle{
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: rgba(255,255,255,0.88);
+    }
+    .stepText{
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .actionsRow{
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Small branding row so it feels finished */
+    .thanksFooterNote{
+      padding: 10px 0 26px;
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="container">
-    <div class="heroCard">
-      <div class="kicker">✅ Request received</div>
-      <div class="h1" style="font-size:38px;">Thanks — I’ll get back to you soon.</div>
-      <p class="lead">If it’s urgent, you can email or text me directly.</p>
-      <div class="actions">
-        <a class="btn btnPrimary" href="index.html">Back to Home</a>
-        <a class="btn btnGhost" href="mailto:youremail@email.com">Email</a>
+  <div class="thanksShell">
+    <div class="container">
+
+      <!-- NAV -->
+      <div class="nav">
+        <div class="brand">
+          <a href="index.html">
+            <img src="logo.png" alt="Gharbiah Cyber Defense logo" class="brand-logo">
+          </a>
+          <span class="badge">Tucson, AZ</span>
+        </div>
+        <div class="actions">
+          <a class="btn btnGhost" href="index.html">Home</a>
+          <a class="btn btnGhost" href="pricing.html">View Pricing</a>
+        </div>
       </div>
+
+      <div class="thanksMain">
+        <div class="thanksCard">
+          <div class="thanksInner">
+
+            <div class="kickerClean">
+              <span class="dot"></span>
+              Submission received
+            </div>
+
+            <div class="thanksTitle">Thank you for choosing Gharbiah Cyber Defense.</div>
+
+            <p class="thanksLead">
+              Your request has been received. I’ll review it and contact you back as soon as possible with next steps.
+            </p>
+
+            <p class="muted">
+              If this is time-sensitive, you can email me directly at
+              <a href="mailto:gharbiahcyberdefense@gmail.com" style="color: rgba(94,234,212,0.95); text-decoration:none;">
+                gharbiahcyberdefense@gmail.com
+              </a>.
+            </p>
+
+            <div class="nextSteps">
+              <div class="step">
+                <div class="stepTitle">1) Review</div>
+                <p class="stepText">I read your message and identify what matters most.</p>
+              </div>
+              <div class="step">
+                <div class="stepTitle">2) Response</div>
+                <p class="stepText">You’ll get a reply with recommendations and options.</p>
+              </div>
+              <div class="step">
+                <div class="stepTitle">3) Next step</div>
+                <p class="stepText">If you want to move forward, work is only done with written authorization.</p>
+              </div>
+            </div>
+
+            <div class="actionsRow">
+              <a class="btn btnPrimary" href="index.html">Back to Home</a>
+              <a class="btn btnGhost" href="request.html">Submit another request</a>
+              <a class="btn btnGhost" href="mailto:gharbiahcyberdefense@gmail.com?subject=Website%20Request%20Follow-Up">Email</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="thanksFooterNote">
+        Professional cybersecurity guidance for individuals and local businesses — Tucson, AZ
+      </div>
+
     </div>
   </div>
 </body>
