@@ -107,7 +107,7 @@
         <input type="hidden" name="service" id="service" value="Security Checkup">
 
         <div class="dd" data-dd>
-          <button type="button" class="ddBtn">
+          <button type="button" class="ddBtn" aria-haspopup="listbox" aria-expanded="false">
             <span data-dd-value>Security Checkup</span> ▾
           </button>
           <ul class="ddMenu">
@@ -141,6 +141,48 @@
   </div>
 </div>
 
+<!-- ✅ ADDED: Dropdown script (does NOT affect your redirect) -->
+<script>
+  document.querySelectorAll("[data-dd]").forEach(dd => {
+    const btn = dd.querySelector(".ddBtn");
+    const valueEl = dd.querySelector("[data-dd-value]");
+    const hidden = document.getElementById("service");
+    const items = Array.from(dd.querySelectorAll(".ddItem"));
+
+    function close() {
+      dd.classList.remove("isOpen");
+      btn.setAttribute("aria-expanded", "false");
+    }
+    function open() {
+      dd.classList.add("isOpen");
+      btn.setAttribute("aria-expanded", "true");
+    }
+    function setValue(val, text) {
+      hidden.value = val;
+      valueEl.textContent = text;
+      items.forEach(i => i.classList.toggle("isActive", i.dataset.value === val));
+      close();
+    }
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dd.classList.contains("isOpen") ? close() : open();
+    });
+
+    items.forEach(i => i.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setValue(i.dataset.value, i.textContent);
+    }));
+
+    document.addEventListener("click", (e) => {
+      if (!dd.contains(e.target)) close();
+    });
+  });
+</script>
+
+<!-- ✅ KEEP: Your working redirect script (unchanged) -->
 <script>
   const form = document.getElementById("requestForm");
   form.addEventListener("submit", async (e) => {
