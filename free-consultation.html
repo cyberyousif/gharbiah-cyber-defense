@@ -132,7 +132,7 @@
       <div style="height:14px"></div>
 
       <div class="formCard">
-        <form action="https://formspree.io/f/mrezplye?next=https://cyberyousif.github.io/gharbiah-cyber-defense/thanks.html" method="POST">
+        <form id="consultForm" action="https://formspree.io/f/mrezplye" method="POST">
 
           <!-- IDENTIFIES THIS AS FREE CONSULTATION -->
           <input type="hidden" name="request_type" value="Free Consultation">
@@ -184,15 +184,9 @@
             placeholder="Example: I received a suspicious message, want safer Wi-Fi, worried about my accounts, or just want to know if things are set up correctly."></textarea>
 
           <input type="hidden" name="_subject" value="New Free Consultation Request (Tucson)">
-          <input type="hidden" name="_next" value="https://cyberyousif.github.io/gharbiah-cyber-defense/thanks.html">
-
 
           <div class="actions" style="margin-top:14px;">
-            <button class="btn btnPrimary" type="submit"
-  onclick="setTimeout(() => window.location.href='https://cyberyousif.github.io/gharbiah-cyber-defense/thanks.html', 800)">
-  Submit Free Consultation
-</button>
-
+            <button class="btn btnPrimary" type="submit">Submit Free Consultation</button>
             <a class="btn btnGhost" href="mailto:gharbiahcyberdefense@gmail.com?subject=Free%20Consultation%20-%20Tucson">Or email instead</a>
           </div>
 
@@ -209,6 +203,7 @@
   </div>
 
   <script>
+    // Dropdown UI (unchanged)
     document.querySelectorAll("[data-dd]").forEach(dd => {
       const btn = dd.querySelector(".ddBtn");
       const valueEl = dd.querySelector("[data-dd-value]");
@@ -234,6 +229,33 @@
       items.forEach(i => i.addEventListener("click", () => setValue(i.dataset.value, i.textContent)));
       document.addEventListener("click", e => !dd.contains(e.target) && close());
     });
+
+    // ✅ GitHub Pages-safe submission + redirect
+    (function () {
+      const form = document.getElementById("consultForm");
+      if (!form) return;
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        try {
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+          });
+
+          if (res.ok) {
+            window.location.href = "https://cyberyousif.github.io/gharbiah-cyber-defense/thanks.html";
+          } else {
+            alert("Submission failed. Please try again or use the email option.");
+          }
+        } catch (err) {
+          alert("Network error. Please try again or use the email option.");
+        }
+      });
+    })();
   </script>
 </body>
 </html>
+
