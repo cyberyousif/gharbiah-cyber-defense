@@ -115,6 +115,8 @@
             <li class="ddItem" data-value="Secure Setup & Hardening">Secure Setup & Hardening</li>
             <li class="ddItem" data-value="Vulnerability Scanning">Vulnerability Scanning</li>
             <li class="ddItem" data-value="Backup & Recovery">Backup & Recovery</li>
+            <li class="ddItem" data-value="Ransomware Readiness &amp; Response">Ransomware Readiness &amp; Response</li>
+            <li class="ddItem" data-value="Employee Cybersecurity Training">Employee Cybersecurity Training</li>
             <li class="ddItem" data-value="Not sure">Not sure — need guidance</li>
           </ul>
         </div>
@@ -141,7 +143,7 @@
   </div>
 </div>
 
-<!-- ✅ ADDED: Dropdown script (does NOT affect your redirect) -->
+<!-- ✅ Dropdown script -->
 <script>
   document.querySelectorAll("[data-dd]").forEach(dd => {
     const btn = dd.querySelector(".ddBtn");
@@ -182,7 +184,7 @@
   });
 </script>
 
-<!-- ✅ KEEP: Your working redirect script (unchanged) -->
+<!-- ✅ Redirect script -->
 <script>
   const form = document.getElementById("requestForm");
   form.addEventListener("submit", async (e) => {

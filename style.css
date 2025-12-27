@@ -529,3 +529,15 @@ input:focus, textarea:focus{
   border: 1px solid rgba(255,255,255,0.16);
   box-shadow: 0 10px 28px rgba(0,0,0,0.22);
 }
+
+/* Ensure equal spacing between stacked split sections */
+.split + .split {
+  margin-top: 26px; /* adjust 22–32px if you want tighter/looser */
+}
+
+/* Consistent vertical spacing between service rows */
+.grid,
+.split {
+  margin-bottom: 32px; /* adjust 28–36px if you want tighter/looser */
+}
+
