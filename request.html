@@ -84,22 +84,22 @@
         <div class="row">
           <div>
             <label>Full Name</label>
-            <input name="name" required>
+            <input name="name" placeholder="Your name" required>
           </div>
           <div>
             <label>Business Name</label>
-            <input name="business">
+            <input name="business" placeholder="Business name (optional)">
           </div>
         </div>
 
         <div class="row">
           <div>
             <label>Email</label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" placeholder="you@email.com" required>
           </div>
           <div>
             <label>Phone</label>
-            <input name="phone">
+            <input name="phone" placeholder="(520) ___-____">
           </div>
         </div>
 
@@ -122,7 +122,11 @@
         </div>
 
         <label>What problem are you trying to solve?</label>
-        <textarea name="problem" required></textarea>
+        <textarea
+          name="problem"
+          required
+          placeholder="Example: I need a security checkup, think a device might have malware, want safer Wi-Fi for staff, or just want to know if everything is set up correctly."
+        ></textarea>
 
         <input type="hidden" name="_subject" value="New Cybersecurity Service Request (Tucson)">
 
